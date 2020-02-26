@@ -1,24 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mpb-3B-c0s">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="tNA-df-tpa">
+            <objects>
+                <navigationController id="mpb-3B-c0s" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BfL-WU-Gxh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="lxM-3t-wa1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XNE-a2-cTw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1286" y="88"/>
+        </scene>
+        <!--Currency Tracker-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CurrencyTrackerViewController" customModule="CurrencyMonitor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btc" translatesAutoresizingMaskIntoConstraints="NO" id="qii-pz-3WV">
+                                <rect key="frame" x="50" y="196" width="275" height="275"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="qii-pz-3WV" secondAttribute="height" multiplier="1:1" id="ipP-SD-nER"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$387.41" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="34" translatesAutoresizingMaskIntoConstraints="NO" id="KRw-HN-xGk">
+                                <rect key="frame" x="50" y="106.5" width="275" height="81.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="68"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="qii-pz-3WV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="9Uj-XW-TUO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KRw-HN-xGk" secondAttribute="trailing" constant="50" id="9Vj-u2-Lnz"/>
+                            <constraint firstItem="KRw-HN-xGk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="Jnv-FC-oWS"/>
+                            <constraint firstItem="qii-pz-3WV" firstAttribute="top" secondItem="KRw-HN-xGk" secondAttribute="bottom" constant="8" id="aa2-Ro-1d2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qii-pz-3WV" secondAttribute="trailing" constant="50" id="ki7-GO-Hl3"/>
+                            <constraint firstItem="qii-pz-3WV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="t4L-3k-4Ap"/>
+                            <constraint firstItem="qii-pz-3WV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="wqd-oi-qCx"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Currency Tracker" id="RTu-8r-5TO">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="refresh" id="OuG-2t-yXQ">
+                            <connections>
+                                <action selector="refreshAmount:" destination="BYZ-38-t0r" id="2G4-Be-bd6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="amount" destination="KRw-HN-xGk" id="Hkt-8K-DBN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-417.39130434782612" y="87.723214285714278"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="btc" width="1500" height="1500"/>
+    </resources>
 </document>
