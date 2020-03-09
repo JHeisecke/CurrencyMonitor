@@ -81,6 +81,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="amount" destination="KRw-HN-xGk" id="Hkt-8K-DBN"/>
+                        <outlet property="amount2" destination="Urm-Dj-fyh" id="YqT-jN-aIY"/>
+                        <outlet property="amount3" destination="I75-D6-4Vc" id="z74-oh-Oq9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

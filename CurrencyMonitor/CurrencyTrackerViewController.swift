@@ -10,17 +10,44 @@ import UIKit
 
 class CurrencyTrackerViewController: UIViewController {
     @IBOutlet weak var amount: UILabel!
+    @IBOutlet weak var amount2: UILabel!
+    @IBOutlet weak var amount3: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //Por ahora solo mostramos bitcoin
         title = "Bitcoin Tracker"
+        callCurrencyMonitorAPI()
     }
 
+    func callCurrencyMonitorAPI(){
+        if let url = URL(string: "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,EUR,PYG"){
+            URLSession.shared.dataTask(with: url) { (data:Data?, response:URLResponse?, errorResponse:Error?) in
+                if errorResponse == nil{
+                    if let pricesJSON = data {
+                        if let json = try? JSONSerialization.jsonObject(with: pricesJSON, options: []) as? [String:Double]{
+                            DispatchQueue.main.async {
+                                if let usdPrice = json["USD"] {
+                                    self.amount.text="USD \(usdPrice)"
+                                }
+                                if let pygPrice = json["PYG"] {
+                                    self.amount2.text="PYG \(pygPrice)"
+                                }
+                                if let eurPrice = json["EUR"] {
+                                    self.amount3.text="EUR \(eurPrice)"
+                                }
+                            }
+                        }
+                    }
+                }else{
+                    print(errorResponse!)
+                }
+            }.resume()
+        }
+    }
+    
     @IBAction func refreshAmount(_ sender: Any) {
-        
-        
+        callCurrencyMonitorAPI()
     }
     
 }
