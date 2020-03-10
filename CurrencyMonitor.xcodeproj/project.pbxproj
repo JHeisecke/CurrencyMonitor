@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,10 @@
 		CE346F3B2406903E001F2FA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE346F392406903E001F2FA7 /* Main.storyboard */; };
 		CE346F3D24069042001F2FA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE346F3C24069042001F2FA7 /* Assets.xcassets */; };
 		CE346F4024069042001F2FA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE346F3E24069042001F2FA7 /* LaunchScreen.storyboard */; };
+		CE77F09F2417D0DC00BF20DF /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE77F09E2417D0DC00BF20DF /* HTTPClient.swift */; };
+		CE77F0A12417D0E500BF20DF /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE77F0A02417D0E500BF20DF /* APIError.swift */; };
+		CE77F0A32417D0EA00BF20DF /* APISessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE77F0A22417D0EA00BF20DF /* APISessionManager.swift */; };
+		CE77F0A52417D3A700BF20DF /* Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE77F0A42417D3A700BF20DF /* Conversions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		CE346F3C24069042001F2FA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE346F3F24069042001F2FA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE346F4124069042001F2FA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE77F09E2417D0DC00BF20DF /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPClient.swift; path = ../../HTTPDemo/HTTPDemo/HTTPClient.swift; sourceTree = "<group>"; };
+		CE77F0A02417D0E500BF20DF /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIError.swift; path = ../../HTTPDemo/HTTPDemo/APIError.swift; sourceTree = "<group>"; };
+		CE77F0A22417D0EA00BF20DF /* APISessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APISessionManager.swift; path = ../../HTTPDemo/HTTPDemo/APISessionManager.swift; sourceTree = "<group>"; };
+		CE77F0A42417D3A700BF20DF /* Conversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,10 +74,14 @@
 				CE346F332406903E001F2FA7 /* AppDelegate.swift */,
 				CE346F352406903E001F2FA7 /* SceneDelegate.swift */,
 				CE346F372406903E001F2FA7 /* CurrencyTrackerViewController.swift */,
+				CE77F0A22417D0EA00BF20DF /* APISessionManager.swift */,
+				CE77F0A02417D0E500BF20DF /* APIError.swift */,
+				CE77F09E2417D0DC00BF20DF /* HTTPClient.swift */,
 				CE346F392406903E001F2FA7 /* Main.storyboard */,
 				CE346F3C24069042001F2FA7 /* Assets.xcassets */,
 				CE346F3E24069042001F2FA7 /* LaunchScreen.storyboard */,
 				CE346F4124069042001F2FA7 /* Info.plist */,
+				CE77F0A42417D3A700BF20DF /* Conversions.swift */,
 			);
 			path = CurrencyMonitor;
 			sourceTree = "<group>";
@@ -88,7 +100,6 @@
 				27607B4826FFB15DA6172681 /* Pods-CurrencyMonitor.debug.xcconfig */,
 				450A9EA02E2CD8E39A5A544A /* Pods-CurrencyMonitor.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -209,7 +220,11 @@
 			files = (
 				CE346F382406903E001F2FA7 /* CurrencyTrackerViewController.swift in Sources */,
 				CE346F342406903E001F2FA7 /* AppDelegate.swift in Sources */,
+				CE77F0A52417D3A700BF20DF /* Conversions.swift in Sources */,
+				CE77F09F2417D0DC00BF20DF /* HTTPClient.swift in Sources */,
+				CE77F0A12417D0E500BF20DF /* APIError.swift in Sources */,
 				CE346F362406903E001F2FA7 /* SceneDelegate.swift in Sources */,
+				CE77F0A32417D0EA00BF20DF /* APISessionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
