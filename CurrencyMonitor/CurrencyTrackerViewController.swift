@@ -14,7 +14,8 @@ class CurrencyTrackerViewController: UIViewController {
     @IBOutlet weak var amount3: UILabel!
     
     let defaults = UserDefaults.standard
-    
+    let parameters : [String:Any] = ["fsym": "BTC","tsyms":["USD","JPY","EUR"]]
+
     override func viewDidLoad() {
         super.viewDidLoad()
         //Por ahora solo mostramos bitcoin
@@ -30,11 +31,22 @@ class CurrencyTrackerViewController: UIViewController {
             amount3.text = eurPrice
         }
         
-        
         callCurrencyMonitorAPI()
     }
 
     func callCurrencyMonitorAPI(){
+        
+        /*HTTPClient.request(endpoint: "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,EUR,PYG",
+            method: .get,
+            encoding: .url,
+            parameters: nil,
+            headers: nil,
+            onSuccess: {(data: Conversions)-> Void in
+                print(data)
+            },
+            onFailure: {(error: APIError)-> Void in
+                print(error)
+            })*/
         if let url = URL(string: "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,EUR,PYG"){
             URLSession.shared.dataTask(with: url) { (data:Data?, response:URLResponse?, errorResponse:Error?) in
                 if errorResponse == nil{
