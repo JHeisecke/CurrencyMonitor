@@ -36,18 +36,32 @@ class CurrencyTrackerViewController: UIViewController {
 
     func callCurrencyMonitorAPI(){
         
-        /*HTTPClient.request(endpoint: "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,EUR,PYG",
+        HTTPClient.request(endpoint: "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,EUR,PYG",
             method: .get,
             encoding: .url,
             parameters: nil,
             headers: nil,
             onSuccess: {(data: Conversions)-> Void in
-                print(data)
+                if let usdPrice = data.USD {
+                    let price = self.getFormattedToCurrency(price: usdPrice, currencyCode: "USD")
+                    self.amount.text = price
+                    self.defaults.set("\(price)~", forKey: "USD")
+                }
+                if let pygPrice = data.PYG {
+                    let price = self.getFormattedToCurrency(price: pygPrice, currencyCode: "PYG")
+                    self.amount2.text = price
+                    self.defaults.set("\(price)~", forKey: "PYG")
+                }
+                if let eurPrice = data.EUR {
+                    let price = self.getFormattedToCurrency(price: eurPrice, currencyCode: "EUR")
+                    self.amount3.text = price
+                    self.defaults.set("\(price)~", forKey: "EUR")
+                }
             },
             onFailure: {(error: APIError)-> Void in
                 print(error)
-            })*/
-        if let url = URL(string: "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,EUR,PYG"){
+            })
+       /* if let url = URL(string: "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,EUR,PYG"){
             URLSession.shared.dataTask(with: url) { (data:Data?, response:URLResponse?, errorResponse:Error?) in
                 if errorResponse == nil{
                     if let pricesJSON = data {
@@ -75,7 +89,7 @@ class CurrencyTrackerViewController: UIViewController {
                     print(errorResponse!)
                 }
             }.resume()
-        }
+        }*/
     }
     
     func getFormattedToCurrency(price: Double, currencyCode: String) -> String{

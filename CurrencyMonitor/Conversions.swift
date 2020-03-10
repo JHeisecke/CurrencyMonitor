@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct Conversions : Codable {
+ class Conversions : Codable {
     //{"USD":8066.82,"PYG":61096592.18,"EUR":7101.26}
     
-    var USD : String
-    var PYG : String
-    var EUR : String
+    var USD : Double?
+    var PYG : Double?
+    var EUR : Double?
 }
