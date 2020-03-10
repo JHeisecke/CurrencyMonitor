@@ -1,0 +1,20 @@
+PODS:
+  - Alamofire (5.0.2)
+  - Sniffer (2.0.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.0)
+  - Sniffer (~> 2.0)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Sniffer
+
+SPEC CHECKSUMS:
+  Alamofire: 3ba7a4db18b4f62c4a1c0e1cb39d7f3d52e10ada
+  Sniffer: 8818aff78371938472e70121eff907f5b0928049
+
+PODFILE CHECKSUM: 6e3c389f3a790d743bb6504f85b2c97338843cac
+
+COCOAPODS: 1.9.1

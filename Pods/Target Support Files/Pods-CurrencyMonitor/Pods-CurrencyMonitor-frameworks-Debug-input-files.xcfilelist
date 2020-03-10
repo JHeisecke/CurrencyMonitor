@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-CurrencyMonitor/Pods-CurrencyMonitor-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/Sniffer/Sniffer.framework
