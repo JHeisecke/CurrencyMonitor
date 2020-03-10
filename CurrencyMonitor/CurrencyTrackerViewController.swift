@@ -14,7 +14,7 @@ class CurrencyTrackerViewController: UIViewController {
     @IBOutlet weak var amount3: UILabel!
     
     let defaults = UserDefaults.standard
-    let parameters : [String:Any] = ["fsym": "BTC","tsyms":["USD","JPY","EUR"]]
+    let parameters : [String:Any] = ["fsym": "BTC","tsyms":"USD,PYG,EUR"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +36,10 @@ class CurrencyTrackerViewController: UIViewController {
 
     func callCurrencyMonitorAPI(){
         
-        HTTPClient.request(endpoint: "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,EUR,PYG",
+        HTTPClient.request(endpoint: "https://min-api.cryptocompare.com/data/price",
             method: .get,
             encoding: .url,
-            parameters: nil,
+            parameters: parameters,
             headers: nil,
             onSuccess: {(data: Conversions)-> Void in
                 if let usdPrice = data.USD {
@@ -61,35 +61,6 @@ class CurrencyTrackerViewController: UIViewController {
             onFailure: {(error: APIError)-> Void in
                 print(error)
             })
-       /* if let url = URL(string: "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,EUR,PYG"){
-            URLSession.shared.dataTask(with: url) { (data:Data?, response:URLResponse?, errorResponse:Error?) in
-                if errorResponse == nil{
-                    if let pricesJSON = data {
-                        if let json = try? JSONSerialization.jsonObject(with: pricesJSON, options: []) as? [String:Double]{
-                            DispatchQueue.main.async {
-                                if let usdPrice = json["USD"] {
-                                    let price = self.getFormattedToCurrency(price: usdPrice, currencyCode: "USD")
-                                    self.amount.text = price
-                                    self.defaults.set("\(price)~", forKey: "USD")
-                                }
-                                if let pygPrice = json["PYG"] {
-                                    let price = self.getFormattedToCurrency(price: pygPrice, currencyCode: "PYG")
-                                    self.amount2.text = price
-                                    self.defaults.set("\(price)~", forKey: "PYG")
-                                }
-                                if let eurPrice = json["EUR"] {
-                                    let price = self.getFormattedToCurrency(price: eurPrice, currencyCode: "EUR")
-                                    self.amount3.text = price
-                                    self.defaults.set("\(price)~", forKey: "EUR")
-                                }
-                            }
-                        }
-                    }
-                }else{
-                    print(errorResponse!)
-                }
-            }.resume()
-        }*/
     }
     
     func getFormattedToCurrency(price: Double, currencyCode: String) -> String{
