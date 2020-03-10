@@ -28,13 +28,13 @@ class CurrencyTrackerViewController: UIViewController {
                         if let json = try? JSONSerialization.jsonObject(with: pricesJSON, options: []) as? [String:Double]{
                             DispatchQueue.main.async {
                                 if let usdPrice = json["USD"] {
-                                    self.amount.text="USD \(usdPrice)"
+                                    self.amount.text = self.getFormattedToCurrency(price: usdPrice, currencyCode: "USD")
                                 }
                                 if let pygPrice = json["PYG"] {
-                                    self.amount2.text="PYG \(pygPrice)"
+                                    self.amount2.text = self.getFormattedToCurrency(price: pygPrice, currencyCode: "PYG")
                                 }
                                 if let eurPrice = json["EUR"] {
-                                    self.amount3.text="EUR \(eurPrice)"
+                                    self.amount3.text = self.getFormattedToCurrency(price: eurPrice, currencyCode: "EUR")
                                 }
                             }
                         }
@@ -44,6 +44,16 @@ class CurrencyTrackerViewController: UIViewController {
                 }
             }.resume()
         }
+    }
+    
+    func getFormattedToCurrency(price: Double, currencyCode: String) -> String{
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencyCode = currencyCode
+        if let priceFormatted = formatter.string(from: NSNumber(value: price)) {
+            return priceFormatted
+        }
+        return "An error has occurred"
     }
     
     @IBAction func refreshAmount(_ sender: Any) {
