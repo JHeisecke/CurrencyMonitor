@@ -13,10 +13,24 @@ class CurrencyTrackerViewController: UIViewController {
     @IBOutlet weak var amount2: UILabel!
     @IBOutlet weak var amount3: UILabel!
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //Por ahora solo mostramos bitcoin
         title = "Bitcoin Tracker"
+        
+        if let usdPrice = defaults.string(forKey: "USD") {
+            amount.text = usdPrice
+        }
+        if let pygPrice = defaults.string(forKey: "PYG") {
+            amount2.text = pygPrice
+        }
+        if let eurPrice = defaults.string(forKey: "EUR") {
+            amount3.text = eurPrice
+        }
+        
+        
         callCurrencyMonitorAPI()
     }
 
@@ -28,13 +42,19 @@ class CurrencyTrackerViewController: UIViewController {
                         if let json = try? JSONSerialization.jsonObject(with: pricesJSON, options: []) as? [String:Double]{
                             DispatchQueue.main.async {
                                 if let usdPrice = json["USD"] {
-                                    self.amount.text = self.getFormattedToCurrency(price: usdPrice, currencyCode: "USD")
+                                    let price = self.getFormattedToCurrency(price: usdPrice, currencyCode: "USD")
+                                    self.amount.text = price
+                                    self.defaults.set("\(price)~", forKey: "USD")
                                 }
                                 if let pygPrice = json["PYG"] {
-                                    self.amount2.text = self.getFormattedToCurrency(price: pygPrice, currencyCode: "PYG")
+                                    let price = self.getFormattedToCurrency(price: pygPrice, currencyCode: "PYG")
+                                    self.amount2.text = price
+                                    self.defaults.set("\(price)~", forKey: "PYG")
                                 }
                                 if let eurPrice = json["EUR"] {
-                                    self.amount3.text = self.getFormattedToCurrency(price: eurPrice, currencyCode: "EUR")
+                                    let price = self.getFormattedToCurrency(price: eurPrice, currencyCode: "EUR")
+                                    self.amount3.text = price
+                                    self.defaults.set("\(price)~", forKey: "EUR")
                                 }
                             }
                         }
